@@ -17,7 +17,7 @@ public class DataConfiguration {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
 		dataSource.setUrl("jdbc:mysql://localhost:3306/eventoapp");
-		dataSource.setUsername("root");
+		dataSource.setUsername("estudo");
 		dataSource.setPassword("enadrov");
 		return dataSource; 
 	}
@@ -28,8 +28,10 @@ public class DataConfiguration {
 		adapter.setDatabase( Database.MYSQL );
 		adapter.setShowSql( true );
 		adapter.setGenerateDdl( true );
-		adapter.setDatabasePlatform("org.hibernate.dialect.MySQLDialect");
+		adapter.setDatabasePlatform("org.hibernate.dialect.MySQL5Dialect");
 		adapter.setPrepareConnection( true );
 		return adapter;
 	}
 }
+//<version>5.1.40</version>
+//<scope>compile</scope>
