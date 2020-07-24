@@ -33,5 +33,3 @@ public class DataConfiguration {
 		return adapter;
 	}
 }
-//<version>5.1.40</version>
-//<scope>compile</scope>
