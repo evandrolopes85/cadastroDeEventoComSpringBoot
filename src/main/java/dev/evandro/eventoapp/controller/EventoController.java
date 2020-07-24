@@ -1,13 +1,28 @@
 package dev.evandro.eventoapp.controller;
 
+import dev.evandro.eventoapp.repository.EventoRepository;
+import dev.evandro.eventoapp.model.Evento;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Controller
 public class EventoController {
 
-	@RequestMapping(path = "/cadastrarEvento")
+	@Autowired
+	private EventoRepository er;
+
+	@RequestMapping(value = "/cadastrarEvento", method=RequestMethod.GET)
 	public String form(){
 		return "evento/formEvento";	
+	}
+
+
+	@RequestMapping(value = "/cadastrarEvento", method=RequestMethod.POST)
+	public String form(Evento evento){
+		er.save( evento );
+		return "redirect:/cadastrarEvento";	
 	}
 }
