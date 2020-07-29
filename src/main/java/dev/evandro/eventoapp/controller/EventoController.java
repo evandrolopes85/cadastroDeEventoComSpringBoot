@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class EventoController {
@@ -28,5 +29,13 @@ public class EventoController {
 	public String form(Evento evento){
 		er.save( evento );
 		return "redirect:/cadastrarEvento";	
+	}
+
+	@GetMapping(path = "/eventos")
+	public ModelAndView listaEventos(){
+		ModelAndView mv = new ModelAndView("index");
+		Iterable<Evento> eventos = er.findAll();
+		mv.addObject("eventos", eventos);
+		return mv;
 	}
 }
